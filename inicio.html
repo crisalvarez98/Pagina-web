@@ -26,6 +26,11 @@
 </head>
 
 <body id="reportsPage" class="bg02">
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
+
     <div class="" id="home">
         <div class="container-fluid">
             <div class="row">
@@ -58,10 +63,8 @@
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="index.html">
-                                        <i class="far fa-user mr-2 tm-logout-icon"></i>
-                                        <span>Salir</span>
-                                    </a>
+                                    <button id="btnLogout" class="btn btn-light"><i class="far fa-user mr-2 tm-logout-icon"></i>Salir
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -152,6 +155,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
     <script src="js/tooplate-scripts.js"></script>
+    <script src="js/inicio.js"></script>
 
     <script>
         let 

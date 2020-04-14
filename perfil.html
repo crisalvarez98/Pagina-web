@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>myEPill</title>
-    <!--
+    
 
-    Template 2108 Dashboard
-
-	http://www.tooplate.com/view/2108-dashboard
-
-    -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -25,7 +20,8 @@
 <body class="bg04">
 
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-    <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
 
     <div class="container">
         <div class="row">
@@ -57,17 +53,17 @@
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link d-flex" href="index.html">
-                                    <i class="far fa-user mr-2 tm-logout-icon"></i>
-                                    <span>Salir</span>
-                                </a>
+                                    <button id="btnLogout" class="btn btn-light"><i class="far fa-user mr-2 tm-logout-icon"></i>Salir
+                                    </button>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
+        
         <!-- row -->
+
         <div class="row tm-content-row tm-mt-big">
             <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                 <div class="bg-white tm-block">
@@ -78,26 +74,22 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <form action="" class="tm-signup-form">
+                            <form method="post" action='#' class="tm-signup-form">
                                 <div class="form-group">
-                                    <label for="name">Nombre y Apellidos</label>
-                                    <input placeholder="Cristina Álvarez González" id="name" name="name" type="text" class="form-control validate">
+                                    <label for="UserName">Nombre y Apellidos</label>
+                                    <input value="" id="UserName" name="name" type="text" class="form-control validate">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input placeholder="usuario@dominio.com" id="email" name="email" type="email" class="form-control validate">
+                                    <label for="UserEmail">Email</label>
+                                    <input value="" id="UserEmail" name="email" type="email" class="form-control validate">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Contraseña</label>
-                                    <input placeholder="******" id="password" name="password" type="password" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password2">Reintroducir Contraseña</label>
-                                    <input placeholder="******" id="password2" name="password2" type="password" class="form-control validate">
+                                    <label for="UserPassword">Contraseña</label>
+                                    <input value="" id='UserPassword' name="password" type="password" class="form-control validate">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-4">
-                                        <button type="submit" class="btn btn-primary">Actualizar
+                                        <button id="btnActualizar" class="btn btn-primary">Actualizar
                                         </button>
                                     </div>
                                 </div>
@@ -132,6 +124,7 @@
     <!-- https://jquery.com/download/ -->
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
+    <script src="js/perfil.js"></script>
 </body>
 
 </html>
