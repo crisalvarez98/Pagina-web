@@ -44,6 +44,10 @@ body {
 	background-image: url(../img/perfil.jpg);
 }
 
+.bg05 {
+	background-image: url(../img/about.jpg);
+}
+
 a {
   transition: all 0.3s ease;
 }

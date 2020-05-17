@@ -1,8 +1,17 @@
+let 
+ctxPie,
+optionsPie,
+configPie,
+PieChart;
+
 const width_threshold = 480;
 
 
+
 function drawPieChart() {
-  if ($("#pieChart").length) {
+
+
+  if (("#pieChart").length) {
     ctxPie = document.getElementById("pieChart").getContext("2d");
     optionsPie = {
       responsive: true,
@@ -14,7 +23,7 @@ function drawPieChart() {
       data: {
         datasets: [
           {
-            data: [4600, 5400],
+            data: [perdidas, tomadas],
             backgroundColor: [
               window.chartColors.orange,
               window.chartColors.green
@@ -26,10 +35,12 @@ function drawPieChart() {
       },
       options: optionsPie
     };
-
     pieChart = new Chart(ctxPie, configPie);
+    
   }
 }
+
+
 
 //...............????............
 function updateChartOptions() {
@@ -103,3 +114,5 @@ function drawCalendar() {
     });
   }
 }
+
+  

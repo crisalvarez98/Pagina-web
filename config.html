@@ -31,7 +31,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
 
-    <div class="" id="home">
+    
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -53,10 +53,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="config.html">Customízame</a>
+                                    <a class="nav-link" href="config.html">Configúrame</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil.html">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.html">Sobre mí</a>
                                 </li>
 
                             </ul>
@@ -71,36 +74,43 @@
                 </div>
             </div>
             <!-- row -->
-            <div class="row tm-content-row tm-mt-big">
+            <div class="row tm-content-row tm-mt-big" >
                 <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     <div class="bg-white tm-block">
                         <div class="row">
                             <div class="col-12">
-                                <h2 class="tm-block-title"> <i class="far fa-1x fa-clock tm-site-icon"></i> Configuración de la hora de las alarmas</h2>
+                                <h2 class="tm-block-title"> <i class="far fa-1x fa-clock tm-site-icon"></i> Configuración de la hora de las alarmas (formato HH:MM)</h2>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <form action="" class="tm-signup-form">
                                     <div class="form-group">
+                                        <input id="btnDesayuno" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info">
                                         <label for="desayuno"><i class="far fa-1x fa-sun tm-site-icon"></i> Alarma desayuno</label>
-                                        <input value="09:00" id="desayuno" name="desayuno" type="time" class="form-control validate">
+                                        <input value="09:00" id="desayuno" name="desayuno" type="time" class="form-control validate"> 
                                     </div>
                                     <div class="form-group">
+                                        
+                                        <input id="btnComida" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info">
                                         <label for="comida"><i class="fas fa-1x fa-sun tm-site-icon"></i> Alarma comida</label>
                                         <input value="14:00" id="comida" name="comida" type="time" class="form-control validate">
                                     </div>
                                     <div class="form-group">
+                                        
+                                        <input id="btnCena" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info">
                                         <label for="cena"> <i class="far fa-1x fa-moon tm-site-icon"></i> Alarma cena</label>
                                         <input value="20:00" id="cena" name="cena" type="time" class="form-control validate">
                                     </div>
                                     <div class="form-group">
+                                        
+                                        <input id="btnNoche" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info">
                                         <label for="noche"><i class="far fa-1x fa-star tm-site-icon"></i> Alarma noche</label>
                                         <input value="22:00" id="noche" name="noche" type="time" class="form-control validate">
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-sm-4">
-                                            <button id="btnActualizar" class="btn btn-primary">Actualizar
+                                            <button type="submit" id="btnActualizar" class="btn btn-primary">Actualizar
                                             </button>
                                         </div>
                                     </div>
@@ -111,26 +121,126 @@
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title d-inline-block">Configuración de la gestión</h2>
+
+                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="bg-white tm-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="tm-block-title"> <i class="far fa-1x fa-clock tm-site-icon"></i> Tiempo de espera para dar una toma por perdida (formato HH:MM)</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="" class="tm-signup-form"></form>
+                                    <div class="form-group">
+                                        <input value="01:00" id="espera" name="espera" type="time" class="form-control validate">
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4">
+                                            <button type="submit" id="btnActualizar2" class="btn btn-primary">Actualizar
+                                            </button>
+                                        </div>
+                                    </div>
+    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="bg-white tm-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="tm-block-title"> <i class="far fa-1x fa-clock tm-site-icon"></i> Configuración de la gestión</h2>
+                            </div>
+                        </div>
                         <table class="table table-hover table-striped mt-3">
                             <tbody>
                                 <tr>
-                                    <td>ON:Tomas perdidas siguen girando OFF: Caen</td>
-                                    <td><input type="checkbox" data-toggle="switchbutton" checked data-onstyle="warning" data-offstyle="info"></td>
+                                    <td>ON:Tomas perdidas siguen girando |  OFF: Caen</td>
+                                    <td><input id="btnPerdidas" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info"></td>
+       
                                 </tr>
                                 <tr>
                                     <td>ON para entrar en "Modo vacaciones"</td>
-                                    <td><input type="checkbox" data-toggle="switchbutton" checked data-onstyle="warning" data-offstyle="info"></td>
+                                    <td><input id="btnVacaciones" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info"></td>
                                 </tr>
-                                <tr>
-                                    <td>Dispensador rellenado</td>
-                                    <td><button type="submit" class="btn btn-primary">Resetear cuenta
-                                    </button></td>
-                                </tr>
-                            </tbody>
+                            </tbody> 
                         </table>
+                                
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <button type="submit" id="btnActualizar3" class="btn btn-primary">Actualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="bg-white tm-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="tm-block-title"> <i class="far fa-1x fa-clock tm-site-icon"></i> Dispensador rellenado (nº de tomas, máximo 32)</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+           
+                                <form action="" class="tm-signup-form">
+                                        <div class="form-group">
+                                            <input value="32" id="resetear" name="resetear" type="number" class="form-control validate">
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-12 col-sm-4">
+                                            <button type="submit" id="btnresetear" class="btn btn-primary">Resetear</button>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="bg-white tm-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="tm-block-title"> <i class="far fa-1x fa-clock tm-site-icon"></i> Notificaciones</h2>
+                           
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+           
+                                <form action="" class="tm-signup-form">
+                                    <div class="form-group">
+                                        
+                                        <input id="btnemail1" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info">
+                                        <label for="email1"> <i class="far fa-1x fa-envelope tm-site-icon"></i> Correo electrónico 1</label>
+                                        <input value="" placeholder="Correo electrónico 1" id="email1" name="email1" type="text" class="form-control validate">
+                                    </div>
+                                    <div class="form-group">
+                                        
+                                        <input id="btnemail2" type="checkbox" data-toggle="switchbutton" data-onstyle="warning" data-offstyle="info">
+                                        <label for="email2"> <i class="far fa-1x fa-envelope tm-site-icon"></i> Correo electrónico 2</label>
+                                        <input value="" placeholder="Correo electrónico 2" id="email2" name="email2" type="text" class="form-control validate">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4">
+                                            <button type="submit" id="btnActualizar4" class="btn btn-primary">Actualizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,7 +252,7 @@
                 </div>
             </footer>
         </div>
-    </div>
+    
     <script src="js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
     <script src="js/bootstrap.min.js"></script>

@@ -15,7 +15,7 @@
     // Inicialización de Firebase
     firebase.initializeApp(firebaseConfig);
     var database=firebase.database();
-
+    var btnprofile=document.getElementById('fileInput');
   
 
     //Si se pusa el botón de "Salir"
@@ -24,59 +24,133 @@
       window.location.href="index.html";
     });
 
-  
 
    
-   //Si se pulsa el botón de "Actualizar"
-    btnActualizar.addEventListener('click', e => { 
-    var user = firebase.auth().currentUser;
+    btnprofile.addEventListener('change', e => {
+        var userId = firebase.auth().currentUser.uid;
+        var file=e.target.files[0];
+        var storageRef=firebase.storage().ref('mis_fotos/'+userId+file.name);
+        var uploadTask=storageRef.put(file);
+        
+        
+        uploadTask.on('state_changed', function progress(snapshot){
 
-    //var email= document.getElementById('UserPassword').value;
-    //user.updateEmail(document.getElementById('UserPassword').value);
+        },function(err){
+          console.log(err);
 
-    user.updateProfile({
-        displayName:document.getElementById('UserName').value,
-        //photoURL: photo
-      }).then(function() { 
-        console.log('Se ha actualizado el usuario:', user);
-        // Update successful.
-      }).catch(function(error) {
-        // An error happened.
-        console.log('NO se ha actualizado el usuario');
-      });
-    
+        },function complete(){
+          console.log('subida de la imagen completada');
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            console.log('File available at', downloadURL);
+            firebase.auth().currentUser.updateProfile({ //Se actualiza la URL de nueva foto de perfil
+              photoURL: downloadURL
+              
+            }).then(function() { 
+              console.log('Se ha actualizado el usuario correctamente');
+              var userId = firebase.auth().currentUser.uid;
+              database.ref('dispensadores/'+userId+'/datospersonales/').update({
+                photourl:downloadURL
+              });
+              window.location.reload(true);
+              // Update successful.
+            }).catch(function(err) {
+              // An error happened.
+              console.log('Error al actualizar el usuario');
+            });
+           
+          }); 
+        });
+        
     });
 
 
+  
+
+   //Si se pulsa el botón de "Actualizar"
+    btnActualizar.addEventListener('click', e => { 
+      e.preventDefault();
+    var user = firebase.auth().currentUser;
+    nameUser=document.getElementById('UserName').value;
+    emailUser=document.getElementById('UserEmail').value;
+    oldPassword=document.getElementById('OldPassword').value;
+    newPassword=document.getElementById('NewPassword').value;
+    email=user.email;
 
 
-    // Listener en tiempo real
-    firebase.auth().onAuthStateChanged( function(user) {
+    firebase.auth()
+        .signInWithEmailAndPassword(email, oldPassword) //Se inicia sesión de nuevo con la contraseña actual introducida por motivos de seguridad
+        .then(function(user) {
 
-        if(user) {
-            var user = firebase.auth().currentUser;
-            document.getElementById('UserName').value=user.displayName;
-            document.getElementById('UserEmail').value=user.email;
-            document.getElementById('UserPassword').value=user.pass;
+            firebase.auth().currentUser.updatePassword(newPassword).then(function(){ //Se actualiza la nueva contraseña
+              console.log('Se ha actualizado la contraseña correctamente');
 
-            //PASAMOS A LA DATABASE LOS DATOS PERSONALES DEL USUARIO
-             var userId = firebase.auth().currentUser.uid;
-             database.ref('dispensadores/'+userId+'/datospersonales/').update({
-               dispensadorid:userId,
-               nombre:document.getElementById('UserName').value,
-               email:document.getElementById('UserEmail').value
-             });
+            }).catch(function(err){
+              console.log('Error al actualizar la contraseña');
+            });
 
-          console.log('Se ha logeado el usuario:', user);
 
-        } else {
-          console.log('Usuario NO logueado');
-        }    
-      });
+
+            firebase.auth().currentUser.updateEmail(emailUser).then(function() { //Se actualiza el nuevo email
+
+              console.log('Se ha actualizado el correo correctamente');
+              // Update successful.
+            }).catch(function(err) {
+              console.log('Error al actualizar el correo electrónico');
+              // An error happened.
+            });
+
+
+
+            firebase.auth().currentUser.updateProfile({ //Se actualiza el nuevo nombre de usuario
+              displayName:nameUser
+              //photoURL: photo
+            }).then(function() { 
+              console.log('Se ha actualizado el usuario correctamente');
+              // Update successful.
+            }).catch(function(err) {
+              // An error happened.
+              console.log('Error al actualizar el usuario');
+            });
+
+
+        }).catch(function(err){
+          console.log('Error al iniciar sesión');
+            
+        });
+
+
+        //PASAMOS A LA DATABASE LOS DATOS PERSONALES DEL USUARIO
+        var userId = firebase.auth().currentUser.uid;
+        database.ref('dispensadores/'+userId+'/datospersonales/').update({
+          dispensadorid:userId,
+          nombre:nameUser,
+          email:emailUser
+         });
+    
+
+    });
   
    
    
+// Listener en tiempo real
+firebase.auth().onAuthStateChanged( function(user) {
+ 
+  if(user) {
+      var user = firebase.auth().currentUser;
+      document.getElementById('UserName').value=user.displayName;
+      document.getElementById('UserEmail').value=user.email;
+      if(user.photoURL==null){
 
+      }else{
+      document.getElementById('imgprofile').src=user.photoURL;
+      }
+
+    console.log('Se ha logeado el usuario:', user);
+
+  } else {
+    console.log('Usuario NO logueado');
+  }    
+});
   
   
   } ());

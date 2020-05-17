@@ -28,8 +28,28 @@
 <body id="reportsPage" class="bg02">
 
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+
+
+    <script>
+        // TODO: Replace the following with your app's Firebase project configuration
+        var firebaseConfig = {
+    apiKey: "AIzaSyDylRFYlqUDU9FA1qzrlgUjsUo0XM_MFvM",
+    authDomain: "myepill.firebaseapp.com",
+    databaseURL: "https://myepill.firebaseio.com",
+    projectId: "myepill",
+    storageBucket: "myepill.appspot.com",
+    messagingSenderId: "674327067819",
+    appId: "1:674327067819:web:b29053106780c98c1a0bee",
+    measurementId: "G-V4GPG3EZWV"
+  };
+  // Inicialización de Firebase
+  firebase.initializeApp(firebaseConfig);
+      </script>
+
+    
 
     <div class="" id="home">
         <div class="container-fluid">
@@ -48,17 +68,19 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Inicio
-                                        <span class="sr-only">(current)</span>
+                                    <a class="nav-link active" href="inicio.html">Inicio
                                     </a>
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="config.html">Customízame</a>
+                                    <a class="nav-link" href="config.html">Configúrame</a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil.html">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.html">Sobre mí</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
@@ -76,25 +98,18 @@
 
             <div class="row tm-content-row tm-mt-big">
                 
-                <div class="col-md-6">
+                <div class="col-md-6" style="height: 400px;">
                     <div class="bg-white tm-block h-100">
                         <div class="row">
                             <div class="col-8">
-                                <h2 class="tm-block-title d-inline-block">Próximas Tomas</h2>
+                                <h2 class="tm-block-title d-inline-block">Recordatorios</h2>
                             </div>   
                         </div>
                         <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
                             <li class="tm-list-group-item">
-                                Siguiente toma 1
-                            </li>
-                            <li class="tm-list-group-item">
-                                Siguiente toma 2
-                            </li>
-                            <li class="tm-list-group-item">
-                                Siguiente toma 3
-                            </li>
-                            <li class="tm-list-group-item">
-                                Siguiente toma 4
+                                Las tomas restantes hasta que se necesite recargar son:
+                                
+                                <div id="resetear" class="text-center"> </div> 
                             </li>
                         </ol>
                     </div>
@@ -122,20 +137,30 @@
 
                 <div class="col-md-6">
                     <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Recordatorios</h2>
-                        <ol class="tm-list-group">
-                            <li class="tm-list-group-item">Recargar</li>
-                            <li class="tm-list-group-item">Recargar</li>
-                            <li class="tm-list-group-item">Recargar</li>
-                            <li class="tm-list-group-item">Recargar</li>
-                            <li class="tm-list-group-item">Recargar</li>
-                            <li class="tm-list-group-item">Recargar</li>
+                        <div class="row">
+                            <div class="col-8">
+                                <h2 class="tm-block-title d-inline-block">Próximas Tomas</h2>
+                            </div>   
+                        </div>
+                        <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
+                            <li class="tm-list-group-item">
+                                Siguiente toma 1
+                            </li>
+                            <li class="tm-list-group-item">
+                                Siguiente toma 2
+                            </li>
+                            <li class="tm-list-group-item">
+                                Siguiente toma 3
+                            </li>
+                            <li class="tm-list-group-item">
+                                Siguiente toma 4
+                            </li>
                         </ol>
                     </div>
                 </div>
             </div>
-            <footer class="row tm-mt-small">
-                <div class="col-12 font-weight-light">
+            <footer class="row tm-mt-small ">
+                <div class="col-12 font-weight-light text-center">
                     <p class="d-inline-block tm-bg-black text-white py-2 px-4">
                         Creado por Cristina Álvarez González - UO257307.
                     </p>
@@ -143,6 +168,7 @@
             </footer>
         </div>
     </div>
+    <script src="js/inicio.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
     <script src="js/moment.min.js"></script>
@@ -155,25 +181,10 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
     <script src="js/tooplate-scripts.js"></script>
-    <script src="js/inicio.js"></script>
+    
 
     <script>
-        let 
-            ctxPie,
-            optionsPie,
-            configPie,
-            pieChart;
-        // DOM is ready
-        $(function () {
-            drawPieChart(); // Pie Chart
-            drawCalendar(); // Calendar
-            //updatePieChart();
-
-            $(window).resize(function () {
-            //updateChartOptions();
-            reloadPage();
-            });
-        })
+        
     </script>
 </body>
 </html>
