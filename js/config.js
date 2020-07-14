@@ -1,3 +1,4 @@
+var resetear;
 (function(){
 
 
@@ -19,7 +20,6 @@
    
 
 
-
     
     //Si se pusa el botón de "Salir"
     btnLogout.addEventListener('click', e => {
@@ -30,30 +30,28 @@
 
 
 
-
-
    // Listener en tiempo real
    firebase.auth().onAuthStateChanged( function(user) {
     if(user) {
       var userId = firebase.auth().currentUser.uid;
 
-      var ref = firebase.database().ref('dispensadores/'+userId+'/datosarduino/');
+      var ref = firebase.database().ref('usuarios/'+userId+'/datosarduino/');
       ref.once("value")
       .then(function(snapshot) {
         document.getElementById('resetear').value = snapshot.child("resetear").val();
+        document.getElementById('tomasminimas').value = snapshot.child("tomasminimas").val();
       });
 
 
-      var ref = firebase.database().ref('dispensadores/'+userId+'/datosweb/');
+      var ref = firebase.database().ref('usuarios/'+userId+'/datosweb/');
       ref.once("value")
       .then(function(snapshot) {
-        if(snapshot.child("desayuno").val()!=""){
-        document.getElementById('desayuno').value = snapshot.child("desayuno").val();} // "valor de la alarma del desayuno"
+      
+        document.getElementById('desayuno').value = snapshot.child("desayuno").val(); // "valor de la alarma del desayuno"
         document.getElementById('comida').value = snapshot.child("comida").val(); // "valor de la alarma del comida"
         document.getElementById('cena').value = snapshot.child("cena").val(); // "valor de la alarma del cena"
         document.getElementById('noche').value = snapshot.child("noche").val(); // "valor de la alarma del noche"
-        if(snapshot.child("espera").val()!=""){
-        document.getElementById('espera').value = snapshot.child("espera").val();}
+        document.getElementById('espera').value = snapshot.child("espera").val();
         document.getElementById('email1').value = snapshot.child("email1").val();
         document.getElementById('email2').value = snapshot.child("email2").val();
 
@@ -146,7 +144,7 @@
     }
 
 
-    database.ref('dispensadores/'+userId+'/datosweb/').update({
+    database.ref('usuarios/'+userId+'/datosweb/').update({
         desayuno:document.getElementById('desayuno').value,
         comida:document.getElementById('comida').value,
         cena:document.getElementById('cena').value,
@@ -159,6 +157,7 @@
 
     }).then(function() { 
       console.log('Se han actualizado las alarmas del usuario:', user);
+      alert("Tus cambios han sido actualizados con éxito.");
       // Update successful.
     }).catch(function(error) {
       // An error happened.
@@ -175,11 +174,12 @@ btnActualizar2.addEventListener('click', e => {
 
     var userId = firebase.auth().currentUser.uid;
     
-    database.ref('dispensadores/'+userId+'/datosweb/').update({
+    database.ref('usuarios/'+userId+'/datosweb/').update({
       espera:document.getElementById('espera').value
 
   }).then(function() { 
-    console.log('Se han actualizado las alarmas del usuario:', user);
+    console.log('Se ha actualizado el tiempo de espera del usuario:', user);
+    alert("Tus cambios han sido actualizados con éxito.");
     // Update successful.
   }).catch(function(error) {
     // An error happened.
@@ -188,8 +188,6 @@ btnActualizar2.addEventListener('click', e => {
 
 
   });
-
-
 
 
 
@@ -210,9 +208,13 @@ btnActualizar2.addEventListener('click', e => {
     }
 
 
-    database.ref('dispensadores/'+userId+'/datosweb/').update({
+    database.ref('usuarios/'+userId+'/datosweb/').update({
         tomasperdidas:perd,
         vacaciones:vac
+    }).then(function() { 
+      console.log('Se ha actualizado la configuración del usuario:', user);
+      alert("Tus cambios han sido actualizados con éxito.");
+      // Update successful.
     });
 
   });
@@ -223,11 +225,12 @@ btnActualizar2.addEventListener('click', e => {
 
     var userId = firebase.auth().currentUser.uid;
     
-    database.ref('dispensadores/'+userId+'/datosarduino/').update({
+    database.ref('usuarios/'+userId+'/datosarduino/').update({
       resetear:document.getElementById('resetear').value
 
   }).then(function() { 
-    console.log('Se han actualizado las alarmas del usuario:', user);
+    console.log('Se han actualizado las tomas rellenadas del usuario:', user);
+    alert("Tus cambios han sido actualizados con éxito.");
     // Update successful.
   }).catch(function(error) {
     // An error happened.
@@ -238,11 +241,23 @@ btnActualizar2.addEventListener('click', e => {
   });
 
 
-
-
-
-
   btnActualizar4.addEventListener('click', e => { 
+
+    var userId = firebase.auth().currentUser.uid;
+    
+    database.ref('usuarios/'+userId+'/datosarduino/').update({
+        tomasminimas:document.getElementById('tomasminimas').value
+    }).then(function() { 
+      console.log('Se han actualizado los cambios del usuario:', user);
+      alert("Tus cambios han sido actualizados con éxito.");
+      // Update successful.
+    });
+
+  });
+
+
+
+  btnActualizar5.addEventListener('click', e => { 
 
     var userId = firebase.auth().currentUser.uid;
     if(document.getElementById('btnemail1').checked){
@@ -258,11 +273,15 @@ btnActualizar2.addEventListener('click', e => {
     }
 
 
-    database.ref('dispensadores/'+userId+'/datosweb/').update({
+    database.ref('usuarios/'+userId+'/datosweb/').update({
         btnemail1:email1,
         btnemail2:email2,
         email1:document.getElementById('email1').value,
         email2:document.getElementById('email2').value
+    }).then(function() { 
+      console.log('Se han actualizado los email del usuario:', user);
+      alert("Tus cambios han sido actualizados con éxito.");
+      // Update successful.
     });
 
   });

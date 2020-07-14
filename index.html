@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>myEpill login</title>
+    <title>MyEpill login</title>
     <!--
 
     Template 2108 Dashboard
@@ -25,8 +25,9 @@
 <body>
 
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
 
 
     <div class="container">
@@ -36,24 +37,45 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <i class="fas fa-3x fa-pills tm-site-icon text-center"></i>
-                            <h2 class="tm-block-title mt-3">Inicio de sesión en myEPill</h2>
+                            <h2 class="tm-block-title mt-3">Inicio de sesión en MyEPill</h2>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <form id="form-autenticacion" method="post" class="tm-login-form"></form>
+                            <form id="form-autenticacion" method="post" class="tm-login-form">
                                 <div class="input-group">
                                     <label for="txtEmail" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Email</label>
-                                    <input id="txtEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" placeholder="Ejemplo: usuario@dominio.com"required>
+                                    <input id="txtEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" placeholder="Ejemplo: usuario@dominio.com" required>
                                 </div>
-                                <div class="input-group mt-3">
+                                <div id="Password2div" class="input-group mt-3">
                                     <label for="txtPassword" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Contraseña</label>
                                     <input id="txtPassword" type="password" value="" class="form-control validate" placeholder="******" required>
                                 </div>
-                                <div class="input-group mt-3">
-                                    <button id="btnLogin" class="btn btn-primary d-inline-block mx-auto">Entrar</button>
+                                <div class="input-group mt-3" id="Passworddiv" style="display:none">
+                                    <label for="txtPassword2" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"> Repetir Contraseña</label>
+                                    <input id="txtPassword2" type="password" value="" class="form-control validate" placeholder="******" required>
                                 </div>
-                                <script src="js/app.js"></script>
+                                <div class="input-group mt-3" id="SerialNumberdiv" style="display:none">
+                                    <label  for="SerialNumber" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"> Número Serie</label>
+                                    <input id="SerialNumber" type="text"  value="" class="form-control validate" placeholder="" required>
+                                </div>
+                                <div id="btnLogindiv" class="input-group mt-3">
+                                    <button id="btnLogin" class="btn btn-primary d-inline-block mx-auto" >Entrar</button>
+                                </div>
+                                <div id="resetpassdiv" class="input-group mt-3">
+                                    <button id="btnresetpass" value="" class="btn btn-primary d-inline-block mx-auto">¿Has olvidado la contraseña?</button>
+                                </div>
+                                <div id="resetpass2div" class="input-group mt-3" style="display:none">
+                                    <button id="btnresetpass2" value="" class="btn btn-primary d-inline-block mx-auto">Resetear contraseña</button>
+                                </div>
+                                <div id="btnSignUpdiv" class="input-group mt-3">
+                                    <button id="btnSignUp" value="" class="btn btn-primary d-inline-block mx-auto">¿Primer registro?</button>
+                                </div>
+                                <div id="btnSignUp2div" class="input-group mt-3" style="display:none">
+                                    <button id="btnSignUp2" value="" class="btn btn-primary d-inline-block mx-auto">Registrarse</button>
+                                </div>
+                                
+                                <script src="js/login.js"></script>
                             </form>
                         </div>
                     </div>
@@ -63,7 +85,7 @@
         <footer class="row tm-mt-big">
             <div class="col-12 font-weight-light text-center">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Creado por Cristina Álvarez González - UO257307.
+                    Desarrollado por Cristina Álvarez González - UO257307.
                 </p>
             </div>
         </footer>

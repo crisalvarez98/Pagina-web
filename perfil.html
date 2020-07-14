@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>myEPill</title>
+    <title>MyEPill</title>
     
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
@@ -30,7 +30,7 @@
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="inicio.html">
                         <i class="fas fa-3x fa-pills tm-site-icon"></i>
-                        <h1 class="tm-site-title mb-0">myEPill</h1>
+                        <h1 class="tm-site-title mb-0">MyEPill</h1>
                     </a>
                     <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -44,14 +44,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="config.html">Configúrame</a>
+                                <a class="nav-link" href="config.html">Configuración</a>
                             </li>
 
                             <li class="nav-item active">
                                 <a class="nav-link" href="perfil.html">Perfil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Sobre mí</a>
+                                <a class="nav-link" href="about.html">Sobre MyEPill</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav">
@@ -68,12 +68,12 @@
         <!-- row -->
 
         <div class="row tm-content-row tm-mt-big">
-            <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+            <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                 <div class="bg-white tm-block">
                     <div class="row">
                         <div class="col-12">
                             <h2 class="tm-block-title"><i class="fas fa-1x fa-user tm-site-icon"></i> Datos de perfil</h2>
-                            <h6>(Para realizar cualquier cambio se debe completar el campo "Introduce tu contraseña actual".)</h6>
+                            <h6>(Para realizar cualquier cambio se debe completar el campo "Introduzca su contraseña actual")</h6>
                         </div>
                         
                         <div class="col-12">
@@ -89,7 +89,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <form method="post" action='#' class="tm-signup-form">
+                            
                                 <div class="form-group">
                                     <label for="UserName">Nombre y Apellidos</label>
                                     <input value="" id="UserName" name="name" type="text" class="form-control validate">
@@ -99,12 +99,8 @@
                                     <input value="" id="UserEmail" name="email" type="email" class="form-control validate">
                                 </div>
                                 <div class="form-group">
-                                    <label for="UserPassword">Introduce tu contraseña actual (*)</label>
-                                    <input value="" placeholder="******" id='OldPassword' name="OldPassword" type="password" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="UserPassword">Introduce tu nueva contraseña</label>
-                                    <input value="" placeholder="******" id='NewPassword' name="NewPassword" type="password" class="form-control validate">
+                                    <label for="OldPassword">Introduzca su contraseña actual (*)</label>
+                                    <input value="" id='OldPassword' name="OldPassword" type="password" class="form-control validate">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-4">
@@ -112,20 +108,73 @@
                                         </button>
                                     </div>
                                 </div>
-
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+
+            
+                <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="bg-white tm-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="tm-block-title"><i class="fas fa-1x fa-user tm-site-icon"></i> Cambio de contraseña</h2>
+                                <h6>(Para cambiar la contraseña debe completar el campo "Introduzca su contraseña actual")</h6>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h6> </h6>
+                            </div>
+                            <div class="col-12">
+                                <h6> </h6>
+                            </div>
+                            <div class="col-12">
+                                <h6> </h6>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                
+                                    <div class="form-group">
+                                        <label for="OldPassword2">Introduzca su contraseña actual (*)</label>
+                                        <input value="" id='OldPassword2' name="OldPassword2" type="password" class="form-control validate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NewPassword1">Introduzca su nueva contraseña</label>
+                                        <input value="" id='NewPassword1' name="NewPassword1" type="password" class="form-control validate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NewPassword2">Introduzca de nuevo su nueva contraseña</label>
+                                        <input value="" id='NewPassword2' name="NewPassword2" type="password" class="form-control validate">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4">
+                                            <button id="btnActualizar2" class="btn btn-primary">Actualizar
+                                            </button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                <div class="bg-white tm-block">
+                    Número serie de su dispensador myEPill:
+                    <output id="serial" style="border: ridge #000000 1px;"> </output> 
+                </div>
+            </div>
+
+            
+            <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                 <div class="bg-white tm-block">
                     <h2 class="tm-block-title">Foto de perfil</h2>
                     <img id="imgprofile" src="img/fotoperfil.jpg" alt="Profile Image" class="img-fluid">
                     <div class="custom-file mt-3 mb-3">
                         <input id="fileInput" type="file" style="display:none;" />
-                        <input type="button" id="btnprofile" class="btn btn-primary d-block mx-xl-auto" value="Cambiar foto" onclick="document.getElementById('fileInput').click();"
-                        />
+                        <input type="button" id="btnprofile" class="btn btn-primary" value="Cambiar foto" onclick="document.getElementById('fileInput').click();"/>
                     </div>
                 </div>
             </div>
@@ -133,7 +182,7 @@
         <footer class="row tm-mt-small " >
             <div class="col-12 font-weight-light text-center">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Creado por Cristina Álvarez González - UO257307.
+                    Desarrollado por Cristina Álvarez González - UO257307.
                 </p>
             </div>
         </footer>
