@@ -29,8 +29,8 @@ repositorio para la página web del TFG
 	/Calendar-Chart.js	 JS para la configuración del calendario y del gráfico de porcentajes.
 	/Utils.js	JS parámetros como los colores o nombres de meses, entre otras cosas, establecidos para facilitar su uso en la página.
 	/Bootstrap-switch-buttom.min.js	JS para el botón interruptor.
-	/Login.js	JS de la subpágina Login
+	/Login.js	JS de la subpágina Login.
 	/Inicio.js	JS de la subpágina Inicio.
 	/Config.js	JS de la subpágina Configuración.
 	/Perfil.js	JS de la subpágina Perfil.
-	/About.js	JS de la subpágina SobreMyEpill
+	/About.js	JS de la subpágina SobreMyEpill.
